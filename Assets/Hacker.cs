@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class Hacker : MonoBehaviour {
     // Configuration for the game
     string[] level1Passwords = {"dwarf", "argon", "ring", "force", "wizard" };
     string[] level2Passwords = { "generator", "alien", "speciman", "predator", "padawan" };
-    string[] level3Passwords = { "dreadnought", "blitzkrieg", "desertatio n", "annexation" };
+    string[] level3Passwords = { "dreadnought", "blitzkrieg", "desertation", "annexation" };
     
 
     // Game state
@@ -26,7 +26,14 @@ public class Hacker : MonoBehaviour {
     {
         print(level1Passwords[0]);
          ShowMainMenu();
-     }
+    }
+
+    void Update()
+    {
+
+        //int index = Random.Range(0, level1Passwords.Length); // Checking random valid?
+        //print(index);
+    }
 
     void ShowMainMenu()
     {
@@ -103,13 +110,17 @@ public class Hacker : MonoBehaviour {
         switch (level)
         {
             case 1:
-                password = level1Passwords[2];
+                //print(level1Passwords.Length);
+                int index_1 = Random.Range(0, level1Passwords.Length);
+                password = level1Passwords[index_1];
                 break;
             case 2:
-                password = level2Passwords[3];
+                int index_2 = Random.Range(0, level2Passwords.Length);
+                password = level2Passwords[index_2];
                 break;
             case 3:
-                password = level3Passwords[0];
+                int index_3 = Random.Range(0, level3Passwords.Length);
+                password = level3Passwords[index_3];
                 break;
             default:
                 Debug.LogError("Invalid level number");
