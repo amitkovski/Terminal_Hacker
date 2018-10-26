@@ -127,17 +127,69 @@ public class Hacker : MonoBehaviour {
                 break;
         }
         //Terminal.WriteLine("You have chosen level" + level);
-        Terminal.WriteLine("Please enter your password");
+        Terminal.WriteLine("Enter your password, HINT" + password.Anagram());
     }
 
     void CheckingPassword(string input)
     {
         if (input == password)
         {
-            Terminal.WriteLine("AWESOME WORK");
+            DisplayWinScreen();
         }else
         {
             Terminal.WriteLine("Sry, password is not right");
         }
+    }
+
+    void DisplayWinScreen()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        ShowRewardForLevel();
+    }
+
+    void ShowRewardForLevel()
+    {
+        switch (level)
+        {
+            case 1:
+                Terminal.WriteLine("R2-D2 and Lea congratulates you ");
+                Terminal.WriteLine(@"
+                    .==.
+                   ()''()-.
+        .---.       ;--; /
+      .'_:___'._..'.  __'.
+      | __-- ==| '-''' \'...;
+      [  ]  :[|       | ---\
+      | __ | I =[|     .'    '.
+      / / ____ |     :       '._
+     | -/.____.'      | :       :
+     / ___\ / ___\      '-'._----'
+"
+                    
+                    );
+                break;
+            case 2:
+                Terminal.WriteLine("You are going to an adventure...");
+                Terminal.WriteLine(@"
+
+            _.===._      ,' ^^^^ ',
+           / _\^^^/ _\    /  ^ ,^  \     ,
+           (0\ ^ / 0)\  / ^  /  ^  \    /\
+            \     /  ^^   ^ \ ^ \  ',.' /
+             )   (  ^  ^   ^ \   \    ,'
+             (o_o) ^    \ ^   ,)  /`^^`
+              ^ V ^\ ^ \  \_,-'((((
+         '/  /`'' /  /
+         '(((`   '(((
+
+"
+                );
+                break;
+            default:
+                Debug.LogError("Invalid level reached");
+
+        }
+
     }
 }
